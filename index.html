@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>地球物理通論｜作業一成果展</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC:wght@400;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#E8EEF0; --paper-2:#DCE5E8; --grid:rgba(40,78,96,.09);
+  --ink:#16262F; --ink-2:#44565F; --ink-3:#6C7C84;
+  --trace:#B8322A; --line:#BFCDD3; --card:#F4F7F8; --chip:#D3DEE2;
+  --focus:#1F6F8B;
+  --kai:"LXGW WenKai TC","Kaiti TC","DFKai-SB","BiauKai",serif;
+  --sans:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#131C21; --paper-2:#18242A; --grid:rgba(160,200,215,.06);
+    --ink:#E3ECEF; --ink-2:#AFC0C7; --ink-3:#83959D;
+    --trace:#F06A5B; --line:#2C3C44; --card:#1A262C; --chip:#24343B; --focus:#7CC4DD;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#131C21; --paper-2:#18242A; --grid:rgba(160,200,215,.06);
+  --ink:#E3ECEF; --ink-2:#AFC0C7; --ink-3:#83959D;
+  --trace:#F06A5B; --line:#2C3C44; --card:#1A262C; --chip:#24343B; --focus:#7CC4DD;
+}
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);
+  font-size:16px;line-height:1.75;
+  background-image:
+    linear-gradient(var(--grid) 1px,transparent 1px),
+    linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:24px 24px;
+}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--focus);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+
+/* hero */
+header.hero{padding:56px 0 8px}
+.course{font-size:.95rem;color:var(--ink-2);margin:0 0 6px}
+h1{font-family:var(--kai);font-weight:700;font-size:clamp(2.3rem,6vw,3.9rem);line-height:1.15;margin:0;letter-spacing:.02em}
+.lede{max-width:40em;color:var(--ink-2);margin:14px 0 0}
+.seis{margin:30px 0 0;background:var(--card);border:1px solid var(--line);border-radius:6px;padding:14px 14px 6px;overflow-x:auto}
+.seis svg{display:block;width:100%;min-width:760px;height:auto}
+.seis .trace{fill:none;stroke:var(--trace);stroke-width:1.6;stroke-linejoin:round}
+.seis .base{stroke:var(--line);stroke-width:1}
+.seis .tick{stroke:var(--ink-3);stroke-width:1}
+.seis a text{font-family:var(--kai);font-size:15px;fill:var(--ink)}
+.seis a:hover text,.seis a:focus text{fill:var(--trace)}
+.seis a:focus{outline:none}
+.seis a:focus-visible rect{stroke:var(--focus);stroke-width:2}
+.seis a rect{fill:transparent}
+.seis-note{font-size:.82rem;color:var(--ink-3);margin:4px 2px 4px}
+@media (prefers-reduced-motion:no-preference){
+  .seis .trace{stroke-dasharray:var(--len);stroke-dashoffset:var(--len);animation:draw 2.6s ease-out .2s forwards}
+  @keyframes draw{to{stroke-dashoffset:0}}
+}
+
+/* filters */
+.filters{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--line);margin-top:34px;padding:12px 0 10px}
+.frow{display:flex;flex-wrap:wrap;gap:6px 8px;align-items:center}
+.frow+.frow{margin-top:8px}
+.flabel{font-size:.85rem;color:var(--ink-3);min-width:4.5em}
+.chip{font:inherit;font-size:.88rem;border:1px solid transparent;background:var(--chip);color:var(--ink);padding:3px 12px;border-radius:999px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.count{margin-left:auto;font-size:.85rem;color:var(--ink-3)}
+.theme-btn{font:inherit;font-size:.85rem;background:none;border:1px solid var(--line);color:var(--ink-2);border-radius:999px;padding:3px 12px;cursor:pointer}
+
+/* entries */
+main{padding:10px 0 40px}
+.entry{display:grid;grid-template-columns:54px 1fr;gap:0 26px;padding:34px 0;border-bottom:1px solid var(--line)}
+.entry[hidden]{display:none}
+.core{display:flex;flex-direction:column;border-radius:4px;overflow:hidden;border:1px solid rgba(0,0,0,.18);min-height:220px}
+.core span{flex:var(--f,1)}
+.head{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px}
+.name{font-family:var(--kai);font-size:2rem;font-weight:700;margin:0;line-height:1.2}
+.sid{color:var(--ink-3);font-size:.9rem}
+.style-tag{font-size:.82rem;color:var(--ink-2);border:1px solid var(--line);border-radius:999px;padding:0 10px}
+.site-title{font-family:var(--kai);font-size:1.15rem;color:var(--ink-2);margin:6px 0 12px}
+.cols{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:8px 32px}
+.desc{margin:0;max-width:36em}
+.hl{margin:0;padding:0;list-style:none}
+.hl li{position:relative;padding-left:18px;margin-bottom:6px;font-size:.95rem;color:var(--ink-2)}
+.hl li::before{content:"";position:absolute;left:0;top:.72em;width:8px;height:2px;background:var(--trace)}
+.foot{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;margin-top:16px}
+.feats{display:flex;flex-wrap:wrap;gap:6px}
+.feat{font-size:.8rem;background:var(--chip);border-radius:4px;padding:1px 8px;color:var(--ink-2)}
+.fonts{font-size:.82rem;color:var(--ink-3)}
+.open{margin-left:auto;display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:500;font-size:.95rem;background:var(--ink);color:var(--paper);padding:7px 16px;border-radius:6px}
+.open:hover{background:var(--trace)}
+.nolink{margin-left:auto;font-size:.88rem;color:var(--ink-3);border:1px dashed var(--line);padding:6px 12px;border-radius:6px}
+.empty{padding:40px 0;color:var(--ink-2)}
+footer{padding:26px 0 48px;color:var(--ink-3);font-size:.85rem}
+
+@media (max-width:760px){
+  .entry{grid-template-columns:1fr;gap:16px}
+  .core{flex-direction:row;min-height:0;height:18px}
+  .cols{grid-template-columns:1fr}
+  .open,.nolink{margin-left:0}
+  .count{margin-left:0;width:100%}
+}
+</style>
+</head>
+<body>
+<header class="hero wrap">
+  <p class="course">臺北市立大學 地球環境暨生物資源學系　115 學年第 1 學期　地球物理通論</p>
+  <h1>作業一成果展</h1>
+  <p class="lede">十四位同學各自用 AI 協作，把同一份課程內容做成了十四種不一樣的網頁：有排球場、有貓助教、有霓虹任務簡報，也有中英對照的語音講稿。點下方震波上的名字，就能跳到那位同學的作品。</p>
+  <figure class="seis" style="margin-left:0;margin-right:0">
+    <svg id="seis" viewBox="0 0 1000 190" role="img" aria-label="以震波圖呈現十四位同學，振幅代表網頁程式碼大小"></svg>
+  </figure>
+  <p class="seis-note">每一段波形代表一位同學，振幅是網頁原始碼的大小，最高的是彭可安的 108 KB 語音講稿。</p>
+</header>
+
+<nav class="filters" aria-label="篩選作品">
+  <div class="wrap">
+    <div class="frow" id="styleRow"><span class="flabel">視覺風格</span></div>
+    <div class="frow" id="featRow"><span class="flabel">互動功能</span><span class="count" id="count"></span></div>
+  </div>
+</nav>
+
+<main class="wrap" id="list"></main>
+
+<footer class="wrap">
+  <p>內容整理自各同學的 GitHub Pages 網站原始碼，擷取日期 2026 年 9 月 30 日。網站內容若之後更新，以同學的網頁為準。</p>
+  <button class="theme-btn" id="themeBtn" type="button">切換深淺色</button>
+</footer>
+
+<script>
+const S = [
+ {id:"u11252003",name:"温沂璇",url:"https://hsuansuan123.github.io/Geophysics_intro/",kb:64,style:"紙本手感",
+  title:"地球物理通論 General Geophysics｜課程導覽",
+  colors:["#fbf9f5","#f4ebd9","#e8c4c4","#8eb6b0","#7ba4b5","#3d6175"],
+  desc:"霧藍、米白加一點淡粉的柔和日系配色，圓體標題讀起來很輕鬆。整頁像一份排版乾淨的課程手冊，從核心理念一路走到課末反思。",
+  hl:["把第一堂課 3 小時拆成三個 Part 的行程脈絡","CLIL 雙語句型庫，句子可以一鍵複製","附上 AI Interaction Log 模版預覽，示範怎麼記錄與 AI 的對話"],
+  feats:["一鍵複製"],fonts:"Zen Maru Gothic、Noto Serif TC、Inter"},
+ {id:"u11310001",name:"李承恩",url:"https://leexn1112.github.io/0909-/#faq",kb:66,style:"紙本手感",
+  title:"用任務模式走進地球物理的奧秘",
+  colors:["#faf6f0","#f4a261","#d97757","#609966","#2a6f97","#014f86"],
+  desc:"水彩紙張般的陶土、海洋藍與鼠尾草綠，搭配 Caveat 手寫英文字，像一本探險筆記。用大量 emoji 當章節路標，親切好讀。",
+  hl:["新手開學裝備庫：打勾完成 4 項準備，進度條跟著前進","介紹四位 AI 學伴的分工與誠信守則","18 週學習冒險路線圖與期末 GitHub Pages 專案說明"],
+  feats:["打勾清單"],fonts:"Zen Maru Gothic、Noto Sans TC、Outfit、Caveat"},
+ {id:"u11310036",name:"蕭筠安",url:"https://u11310036-netizen.github.io/Introduction-to-Geophysics/",kb:67,style:"深色科技",
+  title:"課程綜整與第一堂課學習探究報告",
+  colors:["#090d16","#0f172a","#00f2fe","#4facfe","#10b981","#f59e0b","#8b5cf6"],
+  desc:"做成一份深色系的「探究報告」，左側有章節導覽，也是少數把 HTML、CSS、JavaScript 分成三個檔案的作品，結構最像正式的網站專案。",
+  hl:["中文、英文、中英對照三種閱讀模式，還能一鍵匯出列印成報告","走時計算機、CER 案例選擇器與 18 週路線圖篩選","互動式 Exit Ticket 填寫器與可一鍵複製的 5 階 Gemini Prompts"],
+  feats:["中英切換","計算機","深淺色切換","一鍵複製"],fonts:"Outfit、Inter、Noto Sans TC、JetBrains Mono"},
+ {id:"u11410002",name:"呂俞潔",url:"https://lu40307.github.io/-/",kb:68,style:"簡潔典雅",
+  title:"地球物理通論 General Geophysics｜台北市立大學地生系",
+  colors:["#ffffff","#f8fafc","#eff6ff","#2563eb","#0d9488","#d97706"],
+  desc:"白底配亮藍，版面像現代的產品官網，資訊層次清楚。繳交時還附上了與 AI 的對話紀錄，說明她如何一步步下指令完成網頁。",
+  hl:["以「課堂終極三問」開場，點出這門課的思考方式","課前檢核清單會記住你勾過的項目","可調整字級，並提供 Colab 實作的直接連結"],
+  feats:["打勾清單","字級調整","一鍵複製"],fonts:"Plus Jakarta Sans、Noto Sans TC、JetBrains Mono"},
+ {id:"u11410003",name:"謝承璋",url:"https://u11410003-web.github.io/geo_intro/",kb:5,style:"簡潔典雅",
+  title:"地球物理通論 – 課程介紹與上課方式",
+  colors:["#fdf5e6","#dfe6e9","#b2bec3","#636e72","#2d3436"],
+  desc:"全班最精簡的作品，只有 5 KB、一頁看完。沒有花俏特效，用明朝體直接把課程重點整理成清楚的條列，反而很適合快速查閱。",
+  hl:["「教師示範、學生實作、學生報告」三階段上課流程","課前工具安裝清單，連 PyGMT 安裝指令都寫好了","多了一段「如何在 GitHub Pages 部署」的步驟說明"],
+  feats:[],fonts:"Noto Serif TC"},
+ {id:"u11410010",name:"彭可安",url:"https://u11410010-dotcom.github.io/tt/",kb:108,style:"深色科技",
+  title:"地球物理第一次上課：中英對照開場講稿",
+  colors:["#080c16","#0f172a","#1e293b","#0284c7","#38bdf8","#00d2ff"],
+  desc:"換了一個角度，把第一堂課做成可以「聽」的中英對照講稿，從一個地震問題帶出 CER 與科學建模。是全班功能最多、程式碼最大的作品。",
+  hl:["每段都有發音按鈕，還有全篇朗讀的浮動播放器","中文、英文、對照三種模式，加上字級與深淺色調整","文末附課堂概念即時小測驗"],
+  feats:["語音朗讀","中英切換","字級調整","深淺色切換","測驗","一鍵複製"],fonts:"Outfit、Noto Sans TC、JetBrains Mono"},
+ {id:"u11410015",name:"林柏揚",url:"https://yang-11467.github.io/-/",kb:77,style:"主題創意",
+  title:"VolleyGeo 排球地物小偵探",
+  colors:["#0a0f1d","#1b284a","#38bdf8","#fde047","#fb923c","#f87171","#4ade80"],
+  desc:"把自己最愛的排球和地球物理結合：接球是證據、舉球是推理、扣球是主張。深藍球場底色加上高對比的亮黃與橘，整頁充滿比賽的能量。",
+  hl:["排球「接－舉－扣」對應 CER 科學論證","走時計算機：比比看排球和震波誰跑得快","AI 被比喻成球場上的自由球員 Libero，得分還是要靠自己"],
+  feats:["語音朗讀","計算機","一鍵複製"],fonts:"Fredoka、Outfit、Noto Sans TC、JetBrains Mono"},
+ {id:"u11410016",name:"李侑霖",url:"https://lyl960307.github.io/0909/",kb:66,style:"深色科技",
+  title:"GEOPHYSICS // 任務簡報",
+  colors:["#070b14","#0e1626","#00f2fe","#00f5a0","#ffaa00","#f355a2","#9d4edd"],
+  desc:"霓虹配色的科幻任務簡報，背景有 Canvas 繪製的粒子動畫，標題寫法像終端機指令。把整門課包裝成一場要出發的任務。",
+  hl:["Canvas 粒子動態背景","「課堂探究實驗室」示範 CER 如何運作","CLIL 科學金句與 AI 提示詞產生器"],
+  feats:["動畫背景","打勾清單","一鍵複製"],fonts:"Space Grotesk、Outfit、Noto Sans TC、JetBrains Mono"},
+ {id:"u11410020",name:"李玟誼",url:"https://leeroouo.github.io/earth-Geophysics/",kb:47,style:"主題創意",
+  title:"地球物理通論 × 喵星人探究指南",
+  colors:["#FAF6F0","#FFAB91","#FF7043","#FFCA28","#FF80AB","#26A69A"],
+  desc:"請來首席喵助教「橘寶隊長」帶路，用貓咪解釋地球物理，比喻既好笑又貼切。暖橘與奶油色讓整頁很療癒。",
+  hl:["肉球像天然地震儀、貓是流體像地函、抓貓抓板像斷層彈性回跳","「奴才探險清單」整理課前準備","可以摸摸橘寶隊長的互動彩蛋"],
+  feats:["互動彩蛋"],fonts:"Fredoka、Noto Sans TC"},
+ {id:"u11410024",name:"林恩羽",url:"https://yuuuuuu5ouo.github.io/geophysics-1/",kb:50,style:"明亮活潑",
+  title:"給探險者的彩色修課指南",
+  colors:["#faf7f2","#fffde7","#e1f5fe","#e8f5e9","#ff7a00","#ff5a5f","#23201e"],
+  desc:"主標「給地球照一張彩色超音波」很有畫面感。用粉彩色卡介紹震測、重力、地熱、地電地磁四種「物理感官」，還有叫做「夜讀黑板」的深色模式。",
+  hl:["課堂節奏五部曲，把上課流程講得很具體","CLIL 雙語點播站：記住三句就夠用","「心魔退散」FAQ 與課前小測驗"],
+  feats:["語音朗讀","深淺色切換","測驗","打勾清單"],fonts:"Fraunces、Outfit、Noto Sans TC、Noto Serif TC"},
+ {id:"u11410025",name:"劉得群",url:"https://chun104.github.io/20260923website/",kb:16,style:"簡潔典雅",
+  title:"地球物理通論｜課程介紹",
+  colors:["#121212","#1e1c1a","#3a352d","#a89f91","#e0d5c1","#cba153"],
+  desc:"黑底配香檳金與 Playfair Display 襯線字，氣質像學術期刊。內容最貼近學校官方課程大綱，資訊完整又正式。",
+  hl:["列出開課單位、STEAM 領域與 SDGs 指標等官方資訊","課程目標逐項對應學科、英文、資訊三種能力","課程大綱與評分標準一目了然"],
+  feats:[],fonts:"Playfair Display、Noto Serif TC"},
+ {id:"u11410029",name:"陳傳恩",url:"",kb:74,style:"紙本手感",
+  title:"探索手札：課程指南與課前準備",
+  colors:["#FAF6ED","#F4EFE2","#DA9B46","#C65D3B","#508465","#347B98","#1E4E6E"],
+  desc:"以「嗨，未來的地球偵探！」開場，用水彩紙色調與手寫字做成一本探索手札，從「不能切開地球要怎麼看裡面」出發引導讀者。",
+  hl:["「AI 提問對決」比較問答案和問探究的差別","CLIL 雙語金句寶盒，點一下就能聽發音","課後反思便簽形式的 Exit Ticket"],
+  feats:["語音朗讀","打勾清單","一鍵複製"],fonts:"Fraunces、Caveat、Noto Sans TC、Noto Serif TC",
+  note:"繳交的是本機檔案路徑，尚未發布成公開網址"},
+ {id:"u11410033",name:"陳奕恩",url:"https://yian0213.github.io/Geophysics-intro/",kb:37,style:"明亮活潑",
+  title:"地球物理通論：課堂新手冒險指南",
+  colors:["#fbf7ee","#fde047","#fb923c","#f87171","#38bdf8","#4ade80","#1e293b"],
+  desc:"明亮的黃色和圓潤的 Fredoka 字體，像一份遊戲新手教學。把課程目標包裝成「三大超能力」，第一堂課則是一張闖關地圖。",
+  hl:["6 項課前裝備打勾，全部完成會跳出祝賀","第一堂課 3 小時闖關地圖","可發音的雙語金句卡，並提醒「AI 是協作者，不是答案機器」"],
+  feats:["語音朗讀","打勾清單"],fonts:"Fredoka、Noto Sans TC"},
+ {id:"u11410034",name:"劉宇浩",url:"https://howard50311-ops.github.io/Geophysics/",kb:85,style:"紙本手感",
+  title:"課程指南與探究手冊",
+  colors:["#faf6f0","#ecf4ee","#e07d5d","#c45b3a","#567e61","#3a6b88","#254d63"],
+  desc:"用「醫生不能切開人體，所以發明 X 光和超音波」來類比地球物理，說明非常清楚。海洋藍與鼠尾草綠的配色沉穩舒服。",
+  hl:["小組「黃金鐵三角」角色分工說明","互動式裝備檢核表與 18 週探險地圖","以「日本東側震源為何往內陸越來越深」當探究範例"],
+  feats:["打勾清單"],fonts:"Zen Maru Gothic、Quicksand、Noto Serif TC"}
+];
+
+const STYLES=["全部","紙本手感","深色科技","明亮活潑","主題創意","簡潔典雅"];
+const FEATS=["不限","語音朗讀","中英切換","測驗","打勾清單","計算機","深淺色切換"];
+let curStyle="全部", curFeat="不限";
+
+const esc=s=>s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+function render(){
+  const list=document.getElementById("list");
+  list.innerHTML=S.map(s=>{
+    const layers=s.colors.map((c,i)=>`<span style="background:${c};--f:${[3,2,1.4,2.4,1,1.8,1.2][i%7]}"></span>`).join("");
+    const feats=(s.feats.length?s.feats:["純靜態頁面"]).map(f=>`<span class="feat">${esc(f)}</span>`).join("");
+    const link=s.url?`<a class="open" href="${s.url}" target="_blank" rel="noopener">開啟網頁</a>`:`<span class="nolink">${esc(s.note)}</span>`;
+    return `<article class="entry" id="${s.id}" data-style="${s.style}" data-feats="${s.feats.join(",")}">
+      <div class="core" aria-hidden="true">${layers}</div>
+      <div>
+        <div class="head"><h2 class="name">${esc(s.name)}</h2><span class="sid">${s.id}</span><span class="style-tag">${esc(s.style)}</span></div>
+        <p class="site-title">〈${esc(s.title)}〉</p>
+        <div class="cols">
+          <p class="desc">${esc(s.desc)}</p>
+          <ul class="hl">${s.hl.map(h=>`<li>${esc(h)}</li>`).join("")}</ul>
+        </div>
+        <div class="foot"><div class="feats">${feats}</div><span class="fonts">字體：${esc(s.fonts)}</span>${link}</div>
+      </div></article>`;
+  }).join("")+`<p class="empty" id="empty" hidden>目前沒有同時符合這兩個條件的作品，換一個風格或功能試試看。</p>`;
+}
+
+function chips(rowId,items,get,set){
+  const row=document.getElementById(rowId);
+  const anchor=row.querySelector(".count");
+  items.forEach(t=>{
+    const b=document.createElement("button");
+    b.type="button";b.className="chip";b.textContent=t;
+    b.setAttribute("aria-pressed",String(get()===t));
+    b.onclick=()=>{set(t);row.querySelectorAll(".chip").forEach(c=>c.setAttribute("aria-pressed",String(c.textContent===t)));apply();};
+    row.insertBefore(b,anchor);
+  });
+}
+
+function apply(){
+  let n=0;
+  document.querySelectorAll(".entry").forEach(el=>{
+    const ok=(curStyle==="全部"||el.dataset.style===curStyle)&&(curFeat==="不限"||el.dataset.feats.split(",").includes(curFeat));
+    el.hidden=!ok; if(ok)n++;
+  });
+  document.getElementById("empty").hidden=n>0;
+  document.getElementById("count").textContent=`顯示 ${n} / ${S.length} 件作品`;
+}
+
+function seismo(){
+  const svg=document.getElementById("seis"), W=1000, base=80, seg=W/S.length, maxKb=Math.max(...S.map(s=>s.kb));
+  let d=`M0 ${base}`, marks="";
+  S.forEach((s,i)=>{
+    const x0=i*seg, amp=6+ (s.kb/maxKb)*62, steps=26;
+    for(let k=1;k<=steps;k++){
+      const t=k/steps, x=x0+t*seg;
+      const env=Math.sin(Math.PI*t)**1.6;
+      const y=base+Math.sin(t*Math.PI*(9+(i%4)))*amp*env*((k%2)?1:-.85);
+      d+=` L${x.toFixed(1)} ${y.toFixed(1)}`;
+    }
+    const cx=x0+seg/2;
+    marks+=`<line class="tick" x1="${cx}" y1="152" x2="${cx}" y2="160"/>
+      <a href="#${s.id}" aria-label="跳到${s.name}的作品"><rect x="${x0+2}" y="${base-72}" width="${seg-4}" height="175" rx="4"/>
+      <text x="${cx}" y="180" text-anchor="middle">${s.name}</text></a>`;
+  });
+  svg.innerHTML=`<line class="base" x1="0" y1="${base}" x2="${W}" y2="${base}"/><path class="trace" d="${d}"/>${marks}`;
+  const p=svg.querySelector(".trace"); p.style.setProperty("--len",Math.ceil(p.getTotalLength()));
+}
+
+document.getElementById("themeBtn").onclick=()=>{
+  const r=document.documentElement, dark=r.dataset.theme?r.dataset.theme==="dark":matchMedia("(prefers-color-scheme: dark)").matches;
+  r.dataset.theme=dark?"light":"dark";
+  try{localStorage.setItem("theme",r.dataset.theme)}catch(e){}
+};
+try{const t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t}catch(e){}
+
+render();
+chips("styleRow",STYLES,()=>curStyle,v=>curStyle=v);
+chips("featRow",FEATS,()=>curFeat,v=>curFeat=v);
+apply(); seismo();
+</script>
+</body>
+</html>
